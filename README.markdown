@@ -4,7 +4,7 @@ ConsoleThis is a vim plugin for JavaScript, for automated console output of vari
 
 ## Installation
 
-Place this pluign folder inside the ~/.vim/plugins folder.
+Clone this repo and place the consolethis pluign folder inside the ~/.vim/plugins folder.
 
 OR
 
