@@ -19,7 +19,7 @@ def getIndentStr(indent):
     custom = 2
     if indent ==  0:
         custom = 0
-    # custom can be added to indent in range function    
+    # custom can be added to indent in range function
     for x in range(indent):
         line += ' '
     return line
@@ -37,22 +37,39 @@ def cleanCurrWord(curr):
         item = curr.split(' ')[-2]
         return item
     except:
-        return curr 
+        return curr
 
-  
+
+def getFileExtension():
+    curr_file = vim.current.buffer.name
+    ext = curr_file.split(".")[-1]
+    return ext
+
+
+def getSpecificConsole(ext, word):
+    if ext == 'js':
+        return ("console.log(%s)" % (word))
+    elif ext == 'py':
+        return ("print(%s)" % (word))
+    elif ext == 'go':
+        return ('fmt.Sprintf("%%v", %s)' %(word) )
+    else:
+        return ''
+
 
 def consoleThis():
   curr = getWordUnderCursor()
   clean_word = cleanCurrWord(curr)
+
   indent = findIndent(vim.current.line)
   indentLine = getIndentStr(indent)
-  finalLine = "" + indentLine + ("console.log(%s)" % (clean_word))
+
+  ext = getFileExtension()
+  console = getSpecificConsole(ext, clean_word)
+  finalLine = "" + indentLine + console
 
   x = vim.current.range
   x.append(finalLine)
-
-  # vim.command("split %s" )
-  # vim.current.line = line
 
 endblock
 
