@@ -1,6 +1,7 @@
 # ConsoleThis 
 
-ConsoleThis is a vim plugin for JavaScript, for automated console output of variables.
+ConsoleThis is a vim plugin for automated console output of variables. Currently file extensions which are supported are
+'.js', '.py' & '.go'.
 
 ## Installation
 
